@@ -1,0 +1,8 @@
+inteiro: g
+flutuante: h
+vazio principal()
+		inteiro : x
+		x := 1
+		escreva(1)
+		leia(x)
+fim

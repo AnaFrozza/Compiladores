@@ -58,10 +58,6 @@ class AnaliseLexica:
     t_E = r'\&\&'
     t_OU = r'\|\|'
     t_ignore_COMENTARIO = r'\{[^\}]*[^\{]|\n*?\}'
-    # r'\{[^\}]*[^\{]|\n*\}'
-    # r'({(.|\n)*?\})'
-    # r'\{[^}]*[^{]*\}'
-    # r'{.*}'
 
 
     #Identificador de ID

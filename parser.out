@@ -1,0 +1,2414 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ABRECOLCHETE
+    COMENTARIO
+    DIFERENTE
+    FECHACOLCHETE
+    PRINCIPAL
+    RETORNA
+    UNDERLINE
+    VAZIO
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> declaracao programa
+Rule 2     programa -> declaracao
+Rule 3     declaracao -> declaracao_funcao
+Rule 4     declaracao -> declara_var
+Rule 5     declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+Rule 6     declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+Rule 7     declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+Rule 8     declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM
+Rule 9     declaracao_parametro -> tipo DOISPONTOS ID VIRGULA declaracao_parametro
+Rule 10    declaracao_parametro -> tipo DOISPONTOS ID
+Rule 11    sequencia_declaracao -> declaracao_codigo
+Rule 12    sequencia_declaracao -> sequencia_declaracao declaracao_codigo
+Rule 13    declaracao_codigo -> declaracao_funcao
+Rule 14    declaracao_codigo -> expressao_condicional
+Rule 15    declaracao_codigo -> expressao_interacao
+Rule 16    declaracao_codigo -> expressao_atribuicao
+Rule 17    declaracao_codigo -> expressao_leia
+Rule 18    declaracao_codigo -> expressao_escreva
+Rule 19    declaracao_codigo -> declara_var
+Rule 20    declaracao_codigo -> retorna
+Rule 21    declaracao_codigo -> chamada_funcao
+Rule 22    expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+Rule 23    expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM
+Rule 24    expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao
+Rule 25    expressao_atribuicao -> ID ATRIBUICAO expressao
+Rule 26    expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES
+Rule 27    expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES
+Rule 28    sequencia_de_declaracao -> declaracao_codigo
+Rule 29    sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo
+Rule 30    declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop
+Rule 31    declara_var -> tipo DOISPONTOS ID
+Rule 32    declara_var_loop -> ID VIRGULA declara_var_loop
+Rule 33    declara_var_loop -> ID
+Rule 34    retorna -> ABREPARENTESES expressao FECHAPARENTESES
+Rule 35    chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+Rule 36    parametros_chamada -> expressao VIRGULA parametros_chamada
+Rule 37    parametros_chamada -> expressao
+Rule 38    expressao -> expressao_simples
+Rule 39    expressao -> expressao_simples operadores_comparacao expressao_simples
+Rule 40    expressao_simples -> expressao_simples operadores_atribuicao termo
+Rule 41    expressao_simples -> expressao_simples operadores_multiplicacao termo
+Rule 42    expressao_simples -> termo
+Rule 43    termo -> fator
+Rule 44    fator -> ABREPARENTESES expressao FECHAPARENTESES
+Rule 45    fator -> chamada_funcao
+Rule 46    fator -> expressao_numerica
+Rule 47    fator -> expressao_id
+Rule 48    expressao_numerica -> numero
+Rule 49    expressao_id -> ID
+Rule 50    operadores_comparacao -> MAIOR
+Rule 51    operadores_comparacao -> MAIORIGUAL
+Rule 52    operadores_comparacao -> MENOR
+Rule 53    operadores_comparacao -> MENORIGUAL
+Rule 54    operadores_comparacao -> IGUAL
+Rule 55    operadores -> NEGACAO
+Rule 56    operadores -> E
+Rule 57    operadores -> OU
+Rule 58    operadores_atribuicao -> ADICAO
+Rule 59    operadores_atribuicao -> SUBTRACAO
+Rule 60    operadores_multiplicacao -> MULTIPLICACAO
+Rule 61    operadores_multiplicacao -> DIVISAO
+Rule 62    tipo -> INTEIRO
+Rule 63    tipo -> FLUTUANTE
+Rule 64    numero -> INTEIRO
+Rule 65    numero -> FLUTUANTE
+Rule 66    vazio -> <empty>
+
+Terminals, with rules where they appear
+
+ABRECOLCHETE         : 
+ABREPARENTESES       : 5 6 7 8 26 27 34 35 44
+ADICAO               : 58
+ATE                  : 24
+ATRIBUICAO           : 25
+COMENTARIO           : 
+DIFERENTE            : 
+DIVISAO              : 61
+DOISPONTOS           : 9 10 30 31
+E                    : 56
+ENTAO                : 22 23
+ESCREVE              : 27
+FECHACOLCHETE        : 
+FECHAPARENTESES      : 5 6 7 8 26 27 34 35 44
+FIM                  : 5 6 7 8 22 23
+FLUTUANTE            : 63 65
+ID                   : 5 6 7 8 9 10 25 30 31 32 33 35 49
+IGUAL                : 54
+INTEIRO              : 62 64
+LEIA                 : 26
+MAIOR                : 50
+MAIORIGUAL           : 51
+MENOR                : 52
+MENORIGUAL           : 53
+MULTIPLICACAO        : 60
+NEGACAO              : 55
+OU                   : 57
+PRINCIPAL            : 
+REPITA               : 24
+RETORNA              : 
+SE                   : 22 23
+SENAO                : 22
+SUBTRACAO            : 59
+UNDERLINE            : 
+VAZIO                : 
+VIRGULA              : 9 30 32 36
+error                : 
+
+Nonterminals, with rules where they appear
+
+chamada_funcao       : 21 45
+declara_var          : 4 19
+declara_var_loop     : 30 32
+declaracao           : 1 2
+declaracao_codigo    : 11 12 28 29
+declaracao_funcao    : 3 13
+declaracao_parametro : 5 6 9
+expressao            : 22 23 24 25 26 27 34 36 37 44
+expressao_atribuicao : 16
+expressao_condicional : 14
+expressao_escreva    : 18
+expressao_id         : 47
+expressao_interacao  : 15
+expressao_leia       : 17
+expressao_numerica   : 46
+expressao_simples    : 38 39 39 40 41
+fator                : 43
+numero               : 48
+operadores           : 
+operadores_atribuicao : 40
+operadores_comparacao : 39
+operadores_multiplicacao : 41
+parametros_chamada   : 35 36
+programa             : 1 0
+retorna              : 20
+sequencia_de_declaracao : 22 22 23 24 29
+sequencia_declaracao : 5 7 12
+termo                : 40 41 42
+tipo                 : 5 6 7 8 9 10 30 31
+vazio                : 
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . declaracao programa
+    (2) programa -> . declaracao
+    (3) declaracao -> . declaracao_funcao
+    (4) declaracao -> . declara_var
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    programa                       shift and go to state 1
+    declaracao                     shift and go to state 2
+    declaracao_funcao              shift and go to state 3
+    declara_var                    shift and go to state 4
+    tipo                           shift and go to state 5
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> declaracao . programa
+    (2) programa -> declaracao .
+    (1) programa -> . declaracao programa
+    (2) programa -> . declaracao
+    (3) declaracao -> . declaracao_funcao
+    (4) declaracao -> . declara_var
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    $end            reduce using rule 2 (programa -> declaracao .)
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    declaracao                     shift and go to state 2
+    programa                       shift and go to state 8
+    declaracao_funcao              shift and go to state 3
+    declara_var                    shift and go to state 4
+    tipo                           shift and go to state 5
+
+state 3
+
+    (3) declaracao -> declaracao_funcao .
+
+    INTEIRO         reduce using rule 3 (declaracao -> declaracao_funcao .)
+    FLUTUANTE       reduce using rule 3 (declaracao -> declaracao_funcao .)
+    $end            reduce using rule 3 (declaracao -> declaracao_funcao .)
+
+
+state 4
+
+    (4) declaracao -> declara_var .
+
+    INTEIRO         reduce using rule 4 (declaracao -> declara_var .)
+    FLUTUANTE       reduce using rule 4 (declaracao -> declara_var .)
+    $end            reduce using rule 4 (declaracao -> declara_var .)
+
+
+state 5
+
+    (5) declaracao_funcao -> tipo . ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> tipo . ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> tipo . ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> tipo . ID ABREPARENTESES FECHAPARENTESES FIM
+    (30) declara_var -> tipo . DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> tipo . DOISPONTOS ID
+
+    ID              shift and go to state 9
+    DOISPONTOS      shift and go to state 10
+
+
+state 6
+
+    (62) tipo -> INTEIRO .
+
+    ID              reduce using rule 62 (tipo -> INTEIRO .)
+    DOISPONTOS      reduce using rule 62 (tipo -> INTEIRO .)
+
+
+state 7
+
+    (63) tipo -> FLUTUANTE .
+
+    ID              reduce using rule 63 (tipo -> FLUTUANTE .)
+    DOISPONTOS      reduce using rule 63 (tipo -> FLUTUANTE .)
+
+
+state 8
+
+    (1) programa -> declaracao programa .
+
+    $end            reduce using rule 1 (programa -> declaracao programa .)
+
+
+state 9
+
+    (5) declaracao_funcao -> tipo ID . ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> tipo ID . ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> tipo ID . ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> tipo ID . ABREPARENTESES FECHAPARENTESES FIM
+
+    ABREPARENTESES  shift and go to state 11
+
+
+state 10
+
+    (30) declara_var -> tipo DOISPONTOS . ID VIRGULA declara_var_loop
+    (31) declara_var -> tipo DOISPONTOS . ID
+
+    ID              shift and go to state 12
+
+
+state 11
+
+    (5) declaracao_funcao -> tipo ID ABREPARENTESES . declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> tipo ID ABREPARENTESES . declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> tipo ID ABREPARENTESES . FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> tipo ID ABREPARENTESES . FECHAPARENTESES FIM
+    (9) declaracao_parametro -> . tipo DOISPONTOS ID VIRGULA declaracao_parametro
+    (10) declaracao_parametro -> . tipo DOISPONTOS ID
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    FECHAPARENTESES shift and go to state 15
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    tipo                           shift and go to state 13
+    declaracao_parametro           shift and go to state 14
+
+state 12
+
+    (30) declara_var -> tipo DOISPONTOS ID . VIRGULA declara_var_loop
+    (31) declara_var -> tipo DOISPONTOS ID .
+
+    VIRGULA         shift and go to state 16
+    INTEIRO         reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+    FLUTUANTE       reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+    $end            reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+    FIM             reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+    SE              reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+    REPITA          reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+    ID              reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+    LEIA            reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+    ESCREVE         reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+    ABREPARENTESES  reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+    ATE             reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+    SENAO           reduce using rule 31 (declara_var -> tipo DOISPONTOS ID .)
+
+
+state 13
+
+    (9) declaracao_parametro -> tipo . DOISPONTOS ID VIRGULA declaracao_parametro
+    (10) declaracao_parametro -> tipo . DOISPONTOS ID
+
+    DOISPONTOS      shift and go to state 17
+
+
+state 14
+
+    (5) declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro . FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro . FECHAPARENTESES FIM
+
+    FECHAPARENTESES shift and go to state 18
+
+
+state 15
+
+    (7) declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES . sequencia_declaracao FIM
+    (8) declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES . FIM
+    (11) sequencia_declaracao -> . declaracao_codigo
+    (12) sequencia_declaracao -> . sequencia_declaracao declaracao_codigo
+    (13) declaracao_codigo -> . declaracao_funcao
+    (14) declaracao_codigo -> . expressao_condicional
+    (15) declaracao_codigo -> . expressao_interacao
+    (16) declaracao_codigo -> . expressao_atribuicao
+    (17) declaracao_codigo -> . expressao_leia
+    (18) declaracao_codigo -> . expressao_escreva
+    (19) declaracao_codigo -> . declara_var
+    (20) declaracao_codigo -> . retorna
+    (21) declaracao_codigo -> . chamada_funcao
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (22) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao FIM
+    (24) expressao_interacao -> . REPITA sequencia_de_declaracao ATE expressao
+    (25) expressao_atribuicao -> . ID ATRIBUICAO expressao
+    (26) expressao_leia -> . LEIA ABREPARENTESES expressao FECHAPARENTESES
+    (27) expressao_escreva -> . ESCREVE ABREPARENTESES expressao FECHAPARENTESES
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (34) retorna -> . ABREPARENTESES expressao FECHAPARENTESES
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    FIM             shift and go to state 22
+    SE              shift and go to state 33
+    REPITA          shift and go to state 34
+    ID              shift and go to state 19
+    LEIA            shift and go to state 35
+    ESCREVE         shift and go to state 36
+    ABREPARENTESES  shift and go to state 20
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    tipo                           shift and go to state 5
+    sequencia_declaracao           shift and go to state 21
+    declaracao_codigo              shift and go to state 23
+    declaracao_funcao              shift and go to state 24
+    expressao_condicional          shift and go to state 25
+    expressao_interacao            shift and go to state 26
+    expressao_atribuicao           shift and go to state 27
+    expressao_leia                 shift and go to state 28
+    expressao_escreva              shift and go to state 29
+    declara_var                    shift and go to state 30
+    retorna                        shift and go to state 31
+    chamada_funcao                 shift and go to state 32
+
+state 16
+
+    (30) declara_var -> tipo DOISPONTOS ID VIRGULA . declara_var_loop
+    (32) declara_var_loop -> . ID VIRGULA declara_var_loop
+    (33) declara_var_loop -> . ID
+
+    ID              shift and go to state 37
+
+    declara_var_loop               shift and go to state 38
+
+state 17
+
+    (9) declaracao_parametro -> tipo DOISPONTOS . ID VIRGULA declaracao_parametro
+    (10) declaracao_parametro -> tipo DOISPONTOS . ID
+
+    ID              shift and go to state 39
+
+
+state 18
+
+    (5) declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES . sequencia_declaracao FIM
+    (6) declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES . FIM
+    (11) sequencia_declaracao -> . declaracao_codigo
+    (12) sequencia_declaracao -> . sequencia_declaracao declaracao_codigo
+    (13) declaracao_codigo -> . declaracao_funcao
+    (14) declaracao_codigo -> . expressao_condicional
+    (15) declaracao_codigo -> . expressao_interacao
+    (16) declaracao_codigo -> . expressao_atribuicao
+    (17) declaracao_codigo -> . expressao_leia
+    (18) declaracao_codigo -> . expressao_escreva
+    (19) declaracao_codigo -> . declara_var
+    (20) declaracao_codigo -> . retorna
+    (21) declaracao_codigo -> . chamada_funcao
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (22) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao FIM
+    (24) expressao_interacao -> . REPITA sequencia_de_declaracao ATE expressao
+    (25) expressao_atribuicao -> . ID ATRIBUICAO expressao
+    (26) expressao_leia -> . LEIA ABREPARENTESES expressao FECHAPARENTESES
+    (27) expressao_escreva -> . ESCREVE ABREPARENTESES expressao FECHAPARENTESES
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (34) retorna -> . ABREPARENTESES expressao FECHAPARENTESES
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    FIM             shift and go to state 41
+    SE              shift and go to state 33
+    REPITA          shift and go to state 34
+    ID              shift and go to state 19
+    LEIA            shift and go to state 35
+    ESCREVE         shift and go to state 36
+    ABREPARENTESES  shift and go to state 20
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    tipo                           shift and go to state 5
+    sequencia_declaracao           shift and go to state 40
+    declaracao_codigo              shift and go to state 23
+    declaracao_funcao              shift and go to state 24
+    expressao_condicional          shift and go to state 25
+    expressao_interacao            shift and go to state 26
+    expressao_atribuicao           shift and go to state 27
+    expressao_leia                 shift and go to state 28
+    expressao_escreva              shift and go to state 29
+    declara_var                    shift and go to state 30
+    retorna                        shift and go to state 31
+    chamada_funcao                 shift and go to state 32
+
+state 19
+
+    (25) expressao_atribuicao -> ID . ATRIBUICAO expressao
+    (35) chamada_funcao -> ID . ABREPARENTESES parametros_chamada FECHAPARENTESES
+
+    ATRIBUICAO      shift and go to state 42
+    ABREPARENTESES  shift and go to state 43
+
+
+state 20
+
+    (34) retorna -> ABREPARENTESES . expressao FECHAPARENTESES
+    (38) expressao -> . expressao_simples
+    (39) expressao -> . expressao_simples operadores_comparacao expressao_simples
+    (40) expressao_simples -> . expressao_simples operadores_atribuicao termo
+    (41) expressao_simples -> . expressao_simples operadores_multiplicacao termo
+    (42) expressao_simples -> . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    expressao                      shift and go to state 45
+    expressao_simples              shift and go to state 46
+    termo                          shift and go to state 47
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 21
+
+    (7) declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao . FIM
+    (12) sequencia_declaracao -> sequencia_declaracao . declaracao_codigo
+    (13) declaracao_codigo -> . declaracao_funcao
+    (14) declaracao_codigo -> . expressao_condicional
+    (15) declaracao_codigo -> . expressao_interacao
+    (16) declaracao_codigo -> . expressao_atribuicao
+    (17) declaracao_codigo -> . expressao_leia
+    (18) declaracao_codigo -> . expressao_escreva
+    (19) declaracao_codigo -> . declara_var
+    (20) declaracao_codigo -> . retorna
+    (21) declaracao_codigo -> . chamada_funcao
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (22) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao FIM
+    (24) expressao_interacao -> . REPITA sequencia_de_declaracao ATE expressao
+    (25) expressao_atribuicao -> . ID ATRIBUICAO expressao
+    (26) expressao_leia -> . LEIA ABREPARENTESES expressao FECHAPARENTESES
+    (27) expressao_escreva -> . ESCREVE ABREPARENTESES expressao FECHAPARENTESES
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (34) retorna -> . ABREPARENTESES expressao FECHAPARENTESES
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    FIM             shift and go to state 56
+    SE              shift and go to state 33
+    REPITA          shift and go to state 34
+    ID              shift and go to state 19
+    LEIA            shift and go to state 35
+    ESCREVE         shift and go to state 36
+    ABREPARENTESES  shift and go to state 20
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    tipo                           shift and go to state 5
+    declaracao_codigo              shift and go to state 57
+    declaracao_funcao              shift and go to state 24
+    expressao_condicional          shift and go to state 25
+    expressao_interacao            shift and go to state 26
+    expressao_atribuicao           shift and go to state 27
+    expressao_leia                 shift and go to state 28
+    expressao_escreva              shift and go to state 29
+    declara_var                    shift and go to state 30
+    retorna                        shift and go to state 31
+    chamada_funcao                 shift and go to state 32
+
+state 22
+
+    (8) declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .
+
+    INTEIRO         reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+    FLUTUANTE       reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+    $end            reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+    FIM             reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+    SE              reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+    REPITA          reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+    ID              reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+    LEIA            reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+    ESCREVE         reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+    ABREPARENTESES  reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+    ATE             reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+    SENAO           reduce using rule 8 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES FIM .)
+
+
+state 23
+
+    (11) sequencia_declaracao -> declaracao_codigo .
+
+    FIM             reduce using rule 11 (sequencia_declaracao -> declaracao_codigo .)
+    SE              reduce using rule 11 (sequencia_declaracao -> declaracao_codigo .)
+    REPITA          reduce using rule 11 (sequencia_declaracao -> declaracao_codigo .)
+    ID              reduce using rule 11 (sequencia_declaracao -> declaracao_codigo .)
+    LEIA            reduce using rule 11 (sequencia_declaracao -> declaracao_codigo .)
+    ESCREVE         reduce using rule 11 (sequencia_declaracao -> declaracao_codigo .)
+    ABREPARENTESES  reduce using rule 11 (sequencia_declaracao -> declaracao_codigo .)
+    INTEIRO         reduce using rule 11 (sequencia_declaracao -> declaracao_codigo .)
+    FLUTUANTE       reduce using rule 11 (sequencia_declaracao -> declaracao_codigo .)
+
+
+state 24
+
+    (13) declaracao_codigo -> declaracao_funcao .
+
+    FIM             reduce using rule 13 (declaracao_codigo -> declaracao_funcao .)
+    SE              reduce using rule 13 (declaracao_codigo -> declaracao_funcao .)
+    REPITA          reduce using rule 13 (declaracao_codigo -> declaracao_funcao .)
+    ID              reduce using rule 13 (declaracao_codigo -> declaracao_funcao .)
+    LEIA            reduce using rule 13 (declaracao_codigo -> declaracao_funcao .)
+    ESCREVE         reduce using rule 13 (declaracao_codigo -> declaracao_funcao .)
+    ABREPARENTESES  reduce using rule 13 (declaracao_codigo -> declaracao_funcao .)
+    INTEIRO         reduce using rule 13 (declaracao_codigo -> declaracao_funcao .)
+    FLUTUANTE       reduce using rule 13 (declaracao_codigo -> declaracao_funcao .)
+    ATE             reduce using rule 13 (declaracao_codigo -> declaracao_funcao .)
+    SENAO           reduce using rule 13 (declaracao_codigo -> declaracao_funcao .)
+
+
+state 25
+
+    (14) declaracao_codigo -> expressao_condicional .
+
+    FIM             reduce using rule 14 (declaracao_codigo -> expressao_condicional .)
+    SE              reduce using rule 14 (declaracao_codigo -> expressao_condicional .)
+    REPITA          reduce using rule 14 (declaracao_codigo -> expressao_condicional .)
+    ID              reduce using rule 14 (declaracao_codigo -> expressao_condicional .)
+    LEIA            reduce using rule 14 (declaracao_codigo -> expressao_condicional .)
+    ESCREVE         reduce using rule 14 (declaracao_codigo -> expressao_condicional .)
+    ABREPARENTESES  reduce using rule 14 (declaracao_codigo -> expressao_condicional .)
+    INTEIRO         reduce using rule 14 (declaracao_codigo -> expressao_condicional .)
+    FLUTUANTE       reduce using rule 14 (declaracao_codigo -> expressao_condicional .)
+    ATE             reduce using rule 14 (declaracao_codigo -> expressao_condicional .)
+    SENAO           reduce using rule 14 (declaracao_codigo -> expressao_condicional .)
+
+
+state 26
+
+    (15) declaracao_codigo -> expressao_interacao .
+
+    FIM             reduce using rule 15 (declaracao_codigo -> expressao_interacao .)
+    SE              reduce using rule 15 (declaracao_codigo -> expressao_interacao .)
+    REPITA          reduce using rule 15 (declaracao_codigo -> expressao_interacao .)
+    ID              reduce using rule 15 (declaracao_codigo -> expressao_interacao .)
+    LEIA            reduce using rule 15 (declaracao_codigo -> expressao_interacao .)
+    ESCREVE         reduce using rule 15 (declaracao_codigo -> expressao_interacao .)
+    ABREPARENTESES  reduce using rule 15 (declaracao_codigo -> expressao_interacao .)
+    INTEIRO         reduce using rule 15 (declaracao_codigo -> expressao_interacao .)
+    FLUTUANTE       reduce using rule 15 (declaracao_codigo -> expressao_interacao .)
+    ATE             reduce using rule 15 (declaracao_codigo -> expressao_interacao .)
+    SENAO           reduce using rule 15 (declaracao_codigo -> expressao_interacao .)
+
+
+state 27
+
+    (16) declaracao_codigo -> expressao_atribuicao .
+
+    FIM             reduce using rule 16 (declaracao_codigo -> expressao_atribuicao .)
+    SE              reduce using rule 16 (declaracao_codigo -> expressao_atribuicao .)
+    REPITA          reduce using rule 16 (declaracao_codigo -> expressao_atribuicao .)
+    ID              reduce using rule 16 (declaracao_codigo -> expressao_atribuicao .)
+    LEIA            reduce using rule 16 (declaracao_codigo -> expressao_atribuicao .)
+    ESCREVE         reduce using rule 16 (declaracao_codigo -> expressao_atribuicao .)
+    ABREPARENTESES  reduce using rule 16 (declaracao_codigo -> expressao_atribuicao .)
+    INTEIRO         reduce using rule 16 (declaracao_codigo -> expressao_atribuicao .)
+    FLUTUANTE       reduce using rule 16 (declaracao_codigo -> expressao_atribuicao .)
+    ATE             reduce using rule 16 (declaracao_codigo -> expressao_atribuicao .)
+    SENAO           reduce using rule 16 (declaracao_codigo -> expressao_atribuicao .)
+
+
+state 28
+
+    (17) declaracao_codigo -> expressao_leia .
+
+    FIM             reduce using rule 17 (declaracao_codigo -> expressao_leia .)
+    SE              reduce using rule 17 (declaracao_codigo -> expressao_leia .)
+    REPITA          reduce using rule 17 (declaracao_codigo -> expressao_leia .)
+    ID              reduce using rule 17 (declaracao_codigo -> expressao_leia .)
+    LEIA            reduce using rule 17 (declaracao_codigo -> expressao_leia .)
+    ESCREVE         reduce using rule 17 (declaracao_codigo -> expressao_leia .)
+    ABREPARENTESES  reduce using rule 17 (declaracao_codigo -> expressao_leia .)
+    INTEIRO         reduce using rule 17 (declaracao_codigo -> expressao_leia .)
+    FLUTUANTE       reduce using rule 17 (declaracao_codigo -> expressao_leia .)
+    ATE             reduce using rule 17 (declaracao_codigo -> expressao_leia .)
+    SENAO           reduce using rule 17 (declaracao_codigo -> expressao_leia .)
+
+
+state 29
+
+    (18) declaracao_codigo -> expressao_escreva .
+
+    FIM             reduce using rule 18 (declaracao_codigo -> expressao_escreva .)
+    SE              reduce using rule 18 (declaracao_codigo -> expressao_escreva .)
+    REPITA          reduce using rule 18 (declaracao_codigo -> expressao_escreva .)
+    ID              reduce using rule 18 (declaracao_codigo -> expressao_escreva .)
+    LEIA            reduce using rule 18 (declaracao_codigo -> expressao_escreva .)
+    ESCREVE         reduce using rule 18 (declaracao_codigo -> expressao_escreva .)
+    ABREPARENTESES  reduce using rule 18 (declaracao_codigo -> expressao_escreva .)
+    INTEIRO         reduce using rule 18 (declaracao_codigo -> expressao_escreva .)
+    FLUTUANTE       reduce using rule 18 (declaracao_codigo -> expressao_escreva .)
+    ATE             reduce using rule 18 (declaracao_codigo -> expressao_escreva .)
+    SENAO           reduce using rule 18 (declaracao_codigo -> expressao_escreva .)
+
+
+state 30
+
+    (19) declaracao_codigo -> declara_var .
+
+    FIM             reduce using rule 19 (declaracao_codigo -> declara_var .)
+    SE              reduce using rule 19 (declaracao_codigo -> declara_var .)
+    REPITA          reduce using rule 19 (declaracao_codigo -> declara_var .)
+    ID              reduce using rule 19 (declaracao_codigo -> declara_var .)
+    LEIA            reduce using rule 19 (declaracao_codigo -> declara_var .)
+    ESCREVE         reduce using rule 19 (declaracao_codigo -> declara_var .)
+    ABREPARENTESES  reduce using rule 19 (declaracao_codigo -> declara_var .)
+    INTEIRO         reduce using rule 19 (declaracao_codigo -> declara_var .)
+    FLUTUANTE       reduce using rule 19 (declaracao_codigo -> declara_var .)
+    ATE             reduce using rule 19 (declaracao_codigo -> declara_var .)
+    SENAO           reduce using rule 19 (declaracao_codigo -> declara_var .)
+
+
+state 31
+
+    (20) declaracao_codigo -> retorna .
+
+    FIM             reduce using rule 20 (declaracao_codigo -> retorna .)
+    SE              reduce using rule 20 (declaracao_codigo -> retorna .)
+    REPITA          reduce using rule 20 (declaracao_codigo -> retorna .)
+    ID              reduce using rule 20 (declaracao_codigo -> retorna .)
+    LEIA            reduce using rule 20 (declaracao_codigo -> retorna .)
+    ESCREVE         reduce using rule 20 (declaracao_codigo -> retorna .)
+    ABREPARENTESES  reduce using rule 20 (declaracao_codigo -> retorna .)
+    INTEIRO         reduce using rule 20 (declaracao_codigo -> retorna .)
+    FLUTUANTE       reduce using rule 20 (declaracao_codigo -> retorna .)
+    ATE             reduce using rule 20 (declaracao_codigo -> retorna .)
+    SENAO           reduce using rule 20 (declaracao_codigo -> retorna .)
+
+
+state 32
+
+    (21) declaracao_codigo -> chamada_funcao .
+
+    FIM             reduce using rule 21 (declaracao_codigo -> chamada_funcao .)
+    SE              reduce using rule 21 (declaracao_codigo -> chamada_funcao .)
+    REPITA          reduce using rule 21 (declaracao_codigo -> chamada_funcao .)
+    ID              reduce using rule 21 (declaracao_codigo -> chamada_funcao .)
+    LEIA            reduce using rule 21 (declaracao_codigo -> chamada_funcao .)
+    ESCREVE         reduce using rule 21 (declaracao_codigo -> chamada_funcao .)
+    ABREPARENTESES  reduce using rule 21 (declaracao_codigo -> chamada_funcao .)
+    INTEIRO         reduce using rule 21 (declaracao_codigo -> chamada_funcao .)
+    FLUTUANTE       reduce using rule 21 (declaracao_codigo -> chamada_funcao .)
+    ATE             reduce using rule 21 (declaracao_codigo -> chamada_funcao .)
+    SENAO           reduce using rule 21 (declaracao_codigo -> chamada_funcao .)
+
+
+state 33
+
+    (22) expressao_condicional -> SE . expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> SE . expressao ENTAO sequencia_de_declaracao FIM
+    (38) expressao -> . expressao_simples
+    (39) expressao -> . expressao_simples operadores_comparacao expressao_simples
+    (40) expressao_simples -> . expressao_simples operadores_atribuicao termo
+    (41) expressao_simples -> . expressao_simples operadores_multiplicacao termo
+    (42) expressao_simples -> . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    expressao                      shift and go to state 58
+    expressao_simples              shift and go to state 46
+    termo                          shift and go to state 47
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 34
+
+    (24) expressao_interacao -> REPITA . sequencia_de_declaracao ATE expressao
+    (28) sequencia_de_declaracao -> . declaracao_codigo
+    (29) sequencia_de_declaracao -> . sequencia_de_declaracao declaracao_codigo
+    (13) declaracao_codigo -> . declaracao_funcao
+    (14) declaracao_codigo -> . expressao_condicional
+    (15) declaracao_codigo -> . expressao_interacao
+    (16) declaracao_codigo -> . expressao_atribuicao
+    (17) declaracao_codigo -> . expressao_leia
+    (18) declaracao_codigo -> . expressao_escreva
+    (19) declaracao_codigo -> . declara_var
+    (20) declaracao_codigo -> . retorna
+    (21) declaracao_codigo -> . chamada_funcao
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (22) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao FIM
+    (24) expressao_interacao -> . REPITA sequencia_de_declaracao ATE expressao
+    (25) expressao_atribuicao -> . ID ATRIBUICAO expressao
+    (26) expressao_leia -> . LEIA ABREPARENTESES expressao FECHAPARENTESES
+    (27) expressao_escreva -> . ESCREVE ABREPARENTESES expressao FECHAPARENTESES
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (34) retorna -> . ABREPARENTESES expressao FECHAPARENTESES
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    SE              shift and go to state 33
+    REPITA          shift and go to state 34
+    ID              shift and go to state 19
+    LEIA            shift and go to state 35
+    ESCREVE         shift and go to state 36
+    ABREPARENTESES  shift and go to state 20
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    sequencia_de_declaracao        shift and go to state 59
+    declaracao_codigo              shift and go to state 60
+    declaracao_funcao              shift and go to state 24
+    expressao_condicional          shift and go to state 25
+    expressao_interacao            shift and go to state 26
+    expressao_atribuicao           shift and go to state 27
+    expressao_leia                 shift and go to state 28
+    expressao_escreva              shift and go to state 29
+    declara_var                    shift and go to state 30
+    retorna                        shift and go to state 31
+    chamada_funcao                 shift and go to state 32
+    tipo                           shift and go to state 5
+
+state 35
+
+    (26) expressao_leia -> LEIA . ABREPARENTESES expressao FECHAPARENTESES
+
+    ABREPARENTESES  shift and go to state 61
+
+
+state 36
+
+    (27) expressao_escreva -> ESCREVE . ABREPARENTESES expressao FECHAPARENTESES
+
+    ABREPARENTESES  shift and go to state 62
+
+
+state 37
+
+    (32) declara_var_loop -> ID . VIRGULA declara_var_loop
+    (33) declara_var_loop -> ID .
+
+    VIRGULA         shift and go to state 63
+    INTEIRO         reduce using rule 33 (declara_var_loop -> ID .)
+    FLUTUANTE       reduce using rule 33 (declara_var_loop -> ID .)
+    $end            reduce using rule 33 (declara_var_loop -> ID .)
+    FIM             reduce using rule 33 (declara_var_loop -> ID .)
+    SE              reduce using rule 33 (declara_var_loop -> ID .)
+    REPITA          reduce using rule 33 (declara_var_loop -> ID .)
+    ID              reduce using rule 33 (declara_var_loop -> ID .)
+    LEIA            reduce using rule 33 (declara_var_loop -> ID .)
+    ESCREVE         reduce using rule 33 (declara_var_loop -> ID .)
+    ABREPARENTESES  reduce using rule 33 (declara_var_loop -> ID .)
+    ATE             reduce using rule 33 (declara_var_loop -> ID .)
+    SENAO           reduce using rule 33 (declara_var_loop -> ID .)
+
+
+state 38
+
+    (30) declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .
+
+    INTEIRO         reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+    FLUTUANTE       reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+    $end            reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+    FIM             reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+    SE              reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+    REPITA          reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+    ID              reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+    LEIA            reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+    ESCREVE         reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+    ABREPARENTESES  reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+    ATE             reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+    SENAO           reduce using rule 30 (declara_var -> tipo DOISPONTOS ID VIRGULA declara_var_loop .)
+
+
+state 39
+
+    (9) declaracao_parametro -> tipo DOISPONTOS ID . VIRGULA declaracao_parametro
+    (10) declaracao_parametro -> tipo DOISPONTOS ID .
+
+    VIRGULA         shift and go to state 64
+    FECHAPARENTESES reduce using rule 10 (declaracao_parametro -> tipo DOISPONTOS ID .)
+
+
+state 40
+
+    (5) declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao . FIM
+    (12) sequencia_declaracao -> sequencia_declaracao . declaracao_codigo
+    (13) declaracao_codigo -> . declaracao_funcao
+    (14) declaracao_codigo -> . expressao_condicional
+    (15) declaracao_codigo -> . expressao_interacao
+    (16) declaracao_codigo -> . expressao_atribuicao
+    (17) declaracao_codigo -> . expressao_leia
+    (18) declaracao_codigo -> . expressao_escreva
+    (19) declaracao_codigo -> . declara_var
+    (20) declaracao_codigo -> . retorna
+    (21) declaracao_codigo -> . chamada_funcao
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (22) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao FIM
+    (24) expressao_interacao -> . REPITA sequencia_de_declaracao ATE expressao
+    (25) expressao_atribuicao -> . ID ATRIBUICAO expressao
+    (26) expressao_leia -> . LEIA ABREPARENTESES expressao FECHAPARENTESES
+    (27) expressao_escreva -> . ESCREVE ABREPARENTESES expressao FECHAPARENTESES
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (34) retorna -> . ABREPARENTESES expressao FECHAPARENTESES
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    FIM             shift and go to state 65
+    SE              shift and go to state 33
+    REPITA          shift and go to state 34
+    ID              shift and go to state 19
+    LEIA            shift and go to state 35
+    ESCREVE         shift and go to state 36
+    ABREPARENTESES  shift and go to state 20
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    tipo                           shift and go to state 5
+    declaracao_codigo              shift and go to state 57
+    declaracao_funcao              shift and go to state 24
+    expressao_condicional          shift and go to state 25
+    expressao_interacao            shift and go to state 26
+    expressao_atribuicao           shift and go to state 27
+    expressao_leia                 shift and go to state 28
+    expressao_escreva              shift and go to state 29
+    declara_var                    shift and go to state 30
+    retorna                        shift and go to state 31
+    chamada_funcao                 shift and go to state 32
+
+state 41
+
+    (6) declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .
+
+    INTEIRO         reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+    FLUTUANTE       reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+    $end            reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+    FIM             reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+    SE              reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+    REPITA          reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+    ID              reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+    LEIA            reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+    ESCREVE         reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+    ABREPARENTESES  reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+    ATE             reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+    SENAO           reduce using rule 6 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM .)
+
+
+state 42
+
+    (25) expressao_atribuicao -> ID ATRIBUICAO . expressao
+    (38) expressao -> . expressao_simples
+    (39) expressao -> . expressao_simples operadores_comparacao expressao_simples
+    (40) expressao_simples -> . expressao_simples operadores_atribuicao termo
+    (41) expressao_simples -> . expressao_simples operadores_multiplicacao termo
+    (42) expressao_simples -> . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    expressao                      shift and go to state 66
+    expressao_simples              shift and go to state 46
+    termo                          shift and go to state 47
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 43
+
+    (35) chamada_funcao -> ID ABREPARENTESES . parametros_chamada FECHAPARENTESES
+    (36) parametros_chamada -> . expressao VIRGULA parametros_chamada
+    (37) parametros_chamada -> . expressao
+    (38) expressao -> . expressao_simples
+    (39) expressao -> . expressao_simples operadores_comparacao expressao_simples
+    (40) expressao_simples -> . expressao_simples operadores_atribuicao termo
+    (41) expressao_simples -> . expressao_simples operadores_multiplicacao termo
+    (42) expressao_simples -> . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    parametros_chamada             shift and go to state 67
+    expressao                      shift and go to state 68
+    expressao_simples              shift and go to state 46
+    termo                          shift and go to state 47
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 44
+
+    (44) fator -> ABREPARENTESES . expressao FECHAPARENTESES
+    (38) expressao -> . expressao_simples
+    (39) expressao -> . expressao_simples operadores_comparacao expressao_simples
+    (40) expressao_simples -> . expressao_simples operadores_atribuicao termo
+    (41) expressao_simples -> . expressao_simples operadores_multiplicacao termo
+    (42) expressao_simples -> . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    expressao                      shift and go to state 69
+    expressao_simples              shift and go to state 46
+    termo                          shift and go to state 47
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 45
+
+    (34) retorna -> ABREPARENTESES expressao . FECHAPARENTESES
+
+    FECHAPARENTESES shift and go to state 70
+
+
+state 46
+
+    (38) expressao -> expressao_simples .
+    (39) expressao -> expressao_simples . operadores_comparacao expressao_simples
+    (40) expressao_simples -> expressao_simples . operadores_atribuicao termo
+    (41) expressao_simples -> expressao_simples . operadores_multiplicacao termo
+    (50) operadores_comparacao -> . MAIOR
+    (51) operadores_comparacao -> . MAIORIGUAL
+    (52) operadores_comparacao -> . MENOR
+    (53) operadores_comparacao -> . MENORIGUAL
+    (54) operadores_comparacao -> . IGUAL
+    (58) operadores_atribuicao -> . ADICAO
+    (59) operadores_atribuicao -> . SUBTRACAO
+    (60) operadores_multiplicacao -> . MULTIPLICACAO
+    (61) operadores_multiplicacao -> . DIVISAO
+
+    FECHAPARENTESES reduce using rule 38 (expressao -> expressao_simples .)
+    ENTAO           reduce using rule 38 (expressao -> expressao_simples .)
+    FIM             reduce using rule 38 (expressao -> expressao_simples .)
+    SE              reduce using rule 38 (expressao -> expressao_simples .)
+    REPITA          reduce using rule 38 (expressao -> expressao_simples .)
+    ID              reduce using rule 38 (expressao -> expressao_simples .)
+    LEIA            reduce using rule 38 (expressao -> expressao_simples .)
+    ESCREVE         reduce using rule 38 (expressao -> expressao_simples .)
+    ABREPARENTESES  reduce using rule 38 (expressao -> expressao_simples .)
+    INTEIRO         reduce using rule 38 (expressao -> expressao_simples .)
+    FLUTUANTE       reduce using rule 38 (expressao -> expressao_simples .)
+    ATE             reduce using rule 38 (expressao -> expressao_simples .)
+    SENAO           reduce using rule 38 (expressao -> expressao_simples .)
+    VIRGULA         reduce using rule 38 (expressao -> expressao_simples .)
+    MAIOR           shift and go to state 74
+    MAIORIGUAL      shift and go to state 75
+    MENOR           shift and go to state 76
+    MENORIGUAL      shift and go to state 77
+    IGUAL           shift and go to state 78
+    ADICAO          shift and go to state 79
+    SUBTRACAO       shift and go to state 80
+    MULTIPLICACAO   shift and go to state 81
+    DIVISAO         shift and go to state 82
+
+    operadores_comparacao          shift and go to state 71
+    operadores_atribuicao          shift and go to state 72
+    operadores_multiplicacao       shift and go to state 73
+
+state 47
+
+    (42) expressao_simples -> termo .
+
+    MAIOR           reduce using rule 42 (expressao_simples -> termo .)
+    MAIORIGUAL      reduce using rule 42 (expressao_simples -> termo .)
+    MENOR           reduce using rule 42 (expressao_simples -> termo .)
+    MENORIGUAL      reduce using rule 42 (expressao_simples -> termo .)
+    IGUAL           reduce using rule 42 (expressao_simples -> termo .)
+    ADICAO          reduce using rule 42 (expressao_simples -> termo .)
+    SUBTRACAO       reduce using rule 42 (expressao_simples -> termo .)
+    MULTIPLICACAO   reduce using rule 42 (expressao_simples -> termo .)
+    DIVISAO         reduce using rule 42 (expressao_simples -> termo .)
+    FECHAPARENTESES reduce using rule 42 (expressao_simples -> termo .)
+    ENTAO           reduce using rule 42 (expressao_simples -> termo .)
+    FIM             reduce using rule 42 (expressao_simples -> termo .)
+    SE              reduce using rule 42 (expressao_simples -> termo .)
+    REPITA          reduce using rule 42 (expressao_simples -> termo .)
+    ID              reduce using rule 42 (expressao_simples -> termo .)
+    LEIA            reduce using rule 42 (expressao_simples -> termo .)
+    ESCREVE         reduce using rule 42 (expressao_simples -> termo .)
+    ABREPARENTESES  reduce using rule 42 (expressao_simples -> termo .)
+    INTEIRO         reduce using rule 42 (expressao_simples -> termo .)
+    FLUTUANTE       reduce using rule 42 (expressao_simples -> termo .)
+    ATE             reduce using rule 42 (expressao_simples -> termo .)
+    SENAO           reduce using rule 42 (expressao_simples -> termo .)
+    VIRGULA         reduce using rule 42 (expressao_simples -> termo .)
+
+
+state 48
+
+    (43) termo -> fator .
+
+    MAIOR           reduce using rule 43 (termo -> fator .)
+    MAIORIGUAL      reduce using rule 43 (termo -> fator .)
+    MENOR           reduce using rule 43 (termo -> fator .)
+    MENORIGUAL      reduce using rule 43 (termo -> fator .)
+    IGUAL           reduce using rule 43 (termo -> fator .)
+    ADICAO          reduce using rule 43 (termo -> fator .)
+    SUBTRACAO       reduce using rule 43 (termo -> fator .)
+    MULTIPLICACAO   reduce using rule 43 (termo -> fator .)
+    DIVISAO         reduce using rule 43 (termo -> fator .)
+    FECHAPARENTESES reduce using rule 43 (termo -> fator .)
+    ENTAO           reduce using rule 43 (termo -> fator .)
+    FIM             reduce using rule 43 (termo -> fator .)
+    SE              reduce using rule 43 (termo -> fator .)
+    REPITA          reduce using rule 43 (termo -> fator .)
+    ID              reduce using rule 43 (termo -> fator .)
+    LEIA            reduce using rule 43 (termo -> fator .)
+    ESCREVE         reduce using rule 43 (termo -> fator .)
+    ABREPARENTESES  reduce using rule 43 (termo -> fator .)
+    INTEIRO         reduce using rule 43 (termo -> fator .)
+    FLUTUANTE       reduce using rule 43 (termo -> fator .)
+    ATE             reduce using rule 43 (termo -> fator .)
+    SENAO           reduce using rule 43 (termo -> fator .)
+    VIRGULA         reduce using rule 43 (termo -> fator .)
+
+
+state 49
+
+    (45) fator -> chamada_funcao .
+
+    MAIOR           reduce using rule 45 (fator -> chamada_funcao .)
+    MAIORIGUAL      reduce using rule 45 (fator -> chamada_funcao .)
+    MENOR           reduce using rule 45 (fator -> chamada_funcao .)
+    MENORIGUAL      reduce using rule 45 (fator -> chamada_funcao .)
+    IGUAL           reduce using rule 45 (fator -> chamada_funcao .)
+    ADICAO          reduce using rule 45 (fator -> chamada_funcao .)
+    SUBTRACAO       reduce using rule 45 (fator -> chamada_funcao .)
+    MULTIPLICACAO   reduce using rule 45 (fator -> chamada_funcao .)
+    DIVISAO         reduce using rule 45 (fator -> chamada_funcao .)
+    FECHAPARENTESES reduce using rule 45 (fator -> chamada_funcao .)
+    ENTAO           reduce using rule 45 (fator -> chamada_funcao .)
+    FIM             reduce using rule 45 (fator -> chamada_funcao .)
+    SE              reduce using rule 45 (fator -> chamada_funcao .)
+    REPITA          reduce using rule 45 (fator -> chamada_funcao .)
+    ID              reduce using rule 45 (fator -> chamada_funcao .)
+    LEIA            reduce using rule 45 (fator -> chamada_funcao .)
+    ESCREVE         reduce using rule 45 (fator -> chamada_funcao .)
+    ABREPARENTESES  reduce using rule 45 (fator -> chamada_funcao .)
+    INTEIRO         reduce using rule 45 (fator -> chamada_funcao .)
+    FLUTUANTE       reduce using rule 45 (fator -> chamada_funcao .)
+    ATE             reduce using rule 45 (fator -> chamada_funcao .)
+    SENAO           reduce using rule 45 (fator -> chamada_funcao .)
+    VIRGULA         reduce using rule 45 (fator -> chamada_funcao .)
+
+
+state 50
+
+    (46) fator -> expressao_numerica .
+
+    MAIOR           reduce using rule 46 (fator -> expressao_numerica .)
+    MAIORIGUAL      reduce using rule 46 (fator -> expressao_numerica .)
+    MENOR           reduce using rule 46 (fator -> expressao_numerica .)
+    MENORIGUAL      reduce using rule 46 (fator -> expressao_numerica .)
+    IGUAL           reduce using rule 46 (fator -> expressao_numerica .)
+    ADICAO          reduce using rule 46 (fator -> expressao_numerica .)
+    SUBTRACAO       reduce using rule 46 (fator -> expressao_numerica .)
+    MULTIPLICACAO   reduce using rule 46 (fator -> expressao_numerica .)
+    DIVISAO         reduce using rule 46 (fator -> expressao_numerica .)
+    FECHAPARENTESES reduce using rule 46 (fator -> expressao_numerica .)
+    ENTAO           reduce using rule 46 (fator -> expressao_numerica .)
+    FIM             reduce using rule 46 (fator -> expressao_numerica .)
+    SE              reduce using rule 46 (fator -> expressao_numerica .)
+    REPITA          reduce using rule 46 (fator -> expressao_numerica .)
+    ID              reduce using rule 46 (fator -> expressao_numerica .)
+    LEIA            reduce using rule 46 (fator -> expressao_numerica .)
+    ESCREVE         reduce using rule 46 (fator -> expressao_numerica .)
+    ABREPARENTESES  reduce using rule 46 (fator -> expressao_numerica .)
+    INTEIRO         reduce using rule 46 (fator -> expressao_numerica .)
+    FLUTUANTE       reduce using rule 46 (fator -> expressao_numerica .)
+    ATE             reduce using rule 46 (fator -> expressao_numerica .)
+    SENAO           reduce using rule 46 (fator -> expressao_numerica .)
+    VIRGULA         reduce using rule 46 (fator -> expressao_numerica .)
+
+
+state 51
+
+    (47) fator -> expressao_id .
+
+    MAIOR           reduce using rule 47 (fator -> expressao_id .)
+    MAIORIGUAL      reduce using rule 47 (fator -> expressao_id .)
+    MENOR           reduce using rule 47 (fator -> expressao_id .)
+    MENORIGUAL      reduce using rule 47 (fator -> expressao_id .)
+    IGUAL           reduce using rule 47 (fator -> expressao_id .)
+    ADICAO          reduce using rule 47 (fator -> expressao_id .)
+    SUBTRACAO       reduce using rule 47 (fator -> expressao_id .)
+    MULTIPLICACAO   reduce using rule 47 (fator -> expressao_id .)
+    DIVISAO         reduce using rule 47 (fator -> expressao_id .)
+    FECHAPARENTESES reduce using rule 47 (fator -> expressao_id .)
+    ENTAO           reduce using rule 47 (fator -> expressao_id .)
+    FIM             reduce using rule 47 (fator -> expressao_id .)
+    SE              reduce using rule 47 (fator -> expressao_id .)
+    REPITA          reduce using rule 47 (fator -> expressao_id .)
+    ID              reduce using rule 47 (fator -> expressao_id .)
+    LEIA            reduce using rule 47 (fator -> expressao_id .)
+    ESCREVE         reduce using rule 47 (fator -> expressao_id .)
+    ABREPARENTESES  reduce using rule 47 (fator -> expressao_id .)
+    INTEIRO         reduce using rule 47 (fator -> expressao_id .)
+    FLUTUANTE       reduce using rule 47 (fator -> expressao_id .)
+    ATE             reduce using rule 47 (fator -> expressao_id .)
+    SENAO           reduce using rule 47 (fator -> expressao_id .)
+    VIRGULA         reduce using rule 47 (fator -> expressao_id .)
+
+
+state 52
+
+    (35) chamada_funcao -> ID . ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (49) expressao_id -> ID .
+
+  ! shift/reduce conflict for ABREPARENTESES resolved as shift
+    ABREPARENTESES  shift and go to state 43
+    MAIOR           reduce using rule 49 (expressao_id -> ID .)
+    MAIORIGUAL      reduce using rule 49 (expressao_id -> ID .)
+    MENOR           reduce using rule 49 (expressao_id -> ID .)
+    MENORIGUAL      reduce using rule 49 (expressao_id -> ID .)
+    IGUAL           reduce using rule 49 (expressao_id -> ID .)
+    ADICAO          reduce using rule 49 (expressao_id -> ID .)
+    SUBTRACAO       reduce using rule 49 (expressao_id -> ID .)
+    MULTIPLICACAO   reduce using rule 49 (expressao_id -> ID .)
+    DIVISAO         reduce using rule 49 (expressao_id -> ID .)
+    FECHAPARENTESES reduce using rule 49 (expressao_id -> ID .)
+    ENTAO           reduce using rule 49 (expressao_id -> ID .)
+    FIM             reduce using rule 49 (expressao_id -> ID .)
+    SE              reduce using rule 49 (expressao_id -> ID .)
+    REPITA          reduce using rule 49 (expressao_id -> ID .)
+    ID              reduce using rule 49 (expressao_id -> ID .)
+    LEIA            reduce using rule 49 (expressao_id -> ID .)
+    ESCREVE         reduce using rule 49 (expressao_id -> ID .)
+    INTEIRO         reduce using rule 49 (expressao_id -> ID .)
+    FLUTUANTE       reduce using rule 49 (expressao_id -> ID .)
+    ATE             reduce using rule 49 (expressao_id -> ID .)
+    SENAO           reduce using rule 49 (expressao_id -> ID .)
+    VIRGULA         reduce using rule 49 (expressao_id -> ID .)
+
+  ! ABREPARENTESES  [ reduce using rule 49 (expressao_id -> ID .) ]
+
+
+state 53
+
+    (48) expressao_numerica -> numero .
+
+    MAIOR           reduce using rule 48 (expressao_numerica -> numero .)
+    MAIORIGUAL      reduce using rule 48 (expressao_numerica -> numero .)
+    MENOR           reduce using rule 48 (expressao_numerica -> numero .)
+    MENORIGUAL      reduce using rule 48 (expressao_numerica -> numero .)
+    IGUAL           reduce using rule 48 (expressao_numerica -> numero .)
+    ADICAO          reduce using rule 48 (expressao_numerica -> numero .)
+    SUBTRACAO       reduce using rule 48 (expressao_numerica -> numero .)
+    MULTIPLICACAO   reduce using rule 48 (expressao_numerica -> numero .)
+    DIVISAO         reduce using rule 48 (expressao_numerica -> numero .)
+    FECHAPARENTESES reduce using rule 48 (expressao_numerica -> numero .)
+    ENTAO           reduce using rule 48 (expressao_numerica -> numero .)
+    FIM             reduce using rule 48 (expressao_numerica -> numero .)
+    SE              reduce using rule 48 (expressao_numerica -> numero .)
+    REPITA          reduce using rule 48 (expressao_numerica -> numero .)
+    ID              reduce using rule 48 (expressao_numerica -> numero .)
+    LEIA            reduce using rule 48 (expressao_numerica -> numero .)
+    ESCREVE         reduce using rule 48 (expressao_numerica -> numero .)
+    ABREPARENTESES  reduce using rule 48 (expressao_numerica -> numero .)
+    INTEIRO         reduce using rule 48 (expressao_numerica -> numero .)
+    FLUTUANTE       reduce using rule 48 (expressao_numerica -> numero .)
+    ATE             reduce using rule 48 (expressao_numerica -> numero .)
+    SENAO           reduce using rule 48 (expressao_numerica -> numero .)
+    VIRGULA         reduce using rule 48 (expressao_numerica -> numero .)
+
+
+state 54
+
+    (64) numero -> INTEIRO .
+
+    MAIOR           reduce using rule 64 (numero -> INTEIRO .)
+    MAIORIGUAL      reduce using rule 64 (numero -> INTEIRO .)
+    MENOR           reduce using rule 64 (numero -> INTEIRO .)
+    MENORIGUAL      reduce using rule 64 (numero -> INTEIRO .)
+    IGUAL           reduce using rule 64 (numero -> INTEIRO .)
+    ADICAO          reduce using rule 64 (numero -> INTEIRO .)
+    SUBTRACAO       reduce using rule 64 (numero -> INTEIRO .)
+    MULTIPLICACAO   reduce using rule 64 (numero -> INTEIRO .)
+    DIVISAO         reduce using rule 64 (numero -> INTEIRO .)
+    FECHAPARENTESES reduce using rule 64 (numero -> INTEIRO .)
+    ENTAO           reduce using rule 64 (numero -> INTEIRO .)
+    FIM             reduce using rule 64 (numero -> INTEIRO .)
+    SE              reduce using rule 64 (numero -> INTEIRO .)
+    REPITA          reduce using rule 64 (numero -> INTEIRO .)
+    ID              reduce using rule 64 (numero -> INTEIRO .)
+    LEIA            reduce using rule 64 (numero -> INTEIRO .)
+    ESCREVE         reduce using rule 64 (numero -> INTEIRO .)
+    ABREPARENTESES  reduce using rule 64 (numero -> INTEIRO .)
+    INTEIRO         reduce using rule 64 (numero -> INTEIRO .)
+    FLUTUANTE       reduce using rule 64 (numero -> INTEIRO .)
+    ATE             reduce using rule 64 (numero -> INTEIRO .)
+    SENAO           reduce using rule 64 (numero -> INTEIRO .)
+    VIRGULA         reduce using rule 64 (numero -> INTEIRO .)
+
+
+state 55
+
+    (65) numero -> FLUTUANTE .
+
+    MAIOR           reduce using rule 65 (numero -> FLUTUANTE .)
+    MAIORIGUAL      reduce using rule 65 (numero -> FLUTUANTE .)
+    MENOR           reduce using rule 65 (numero -> FLUTUANTE .)
+    MENORIGUAL      reduce using rule 65 (numero -> FLUTUANTE .)
+    IGUAL           reduce using rule 65 (numero -> FLUTUANTE .)
+    ADICAO          reduce using rule 65 (numero -> FLUTUANTE .)
+    SUBTRACAO       reduce using rule 65 (numero -> FLUTUANTE .)
+    MULTIPLICACAO   reduce using rule 65 (numero -> FLUTUANTE .)
+    DIVISAO         reduce using rule 65 (numero -> FLUTUANTE .)
+    FECHAPARENTESES reduce using rule 65 (numero -> FLUTUANTE .)
+    ENTAO           reduce using rule 65 (numero -> FLUTUANTE .)
+    FIM             reduce using rule 65 (numero -> FLUTUANTE .)
+    SE              reduce using rule 65 (numero -> FLUTUANTE .)
+    REPITA          reduce using rule 65 (numero -> FLUTUANTE .)
+    ID              reduce using rule 65 (numero -> FLUTUANTE .)
+    LEIA            reduce using rule 65 (numero -> FLUTUANTE .)
+    ESCREVE         reduce using rule 65 (numero -> FLUTUANTE .)
+    ABREPARENTESES  reduce using rule 65 (numero -> FLUTUANTE .)
+    INTEIRO         reduce using rule 65 (numero -> FLUTUANTE .)
+    FLUTUANTE       reduce using rule 65 (numero -> FLUTUANTE .)
+    ATE             reduce using rule 65 (numero -> FLUTUANTE .)
+    SENAO           reduce using rule 65 (numero -> FLUTUANTE .)
+    VIRGULA         reduce using rule 65 (numero -> FLUTUANTE .)
+
+
+state 56
+
+    (7) declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .
+
+    INTEIRO         reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+    FLUTUANTE       reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+    $end            reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+    FIM             reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+    SE              reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+    REPITA          reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+    ID              reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+    LEIA            reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+    ESCREVE         reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+    ABREPARENTESES  reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+    ATE             reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+    SENAO           reduce using rule 7 (declaracao_funcao -> tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM .)
+
+
+state 57
+
+    (12) sequencia_declaracao -> sequencia_declaracao declaracao_codigo .
+
+    FIM             reduce using rule 12 (sequencia_declaracao -> sequencia_declaracao declaracao_codigo .)
+    SE              reduce using rule 12 (sequencia_declaracao -> sequencia_declaracao declaracao_codigo .)
+    REPITA          reduce using rule 12 (sequencia_declaracao -> sequencia_declaracao declaracao_codigo .)
+    ID              reduce using rule 12 (sequencia_declaracao -> sequencia_declaracao declaracao_codigo .)
+    LEIA            reduce using rule 12 (sequencia_declaracao -> sequencia_declaracao declaracao_codigo .)
+    ESCREVE         reduce using rule 12 (sequencia_declaracao -> sequencia_declaracao declaracao_codigo .)
+    ABREPARENTESES  reduce using rule 12 (sequencia_declaracao -> sequencia_declaracao declaracao_codigo .)
+    INTEIRO         reduce using rule 12 (sequencia_declaracao -> sequencia_declaracao declaracao_codigo .)
+    FLUTUANTE       reduce using rule 12 (sequencia_declaracao -> sequencia_declaracao declaracao_codigo .)
+
+
+state 58
+
+    (22) expressao_condicional -> SE expressao . ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> SE expressao . ENTAO sequencia_de_declaracao FIM
+
+    ENTAO           shift and go to state 83
+
+
+state 59
+
+    (24) expressao_interacao -> REPITA sequencia_de_declaracao . ATE expressao
+    (29) sequencia_de_declaracao -> sequencia_de_declaracao . declaracao_codigo
+    (13) declaracao_codigo -> . declaracao_funcao
+    (14) declaracao_codigo -> . expressao_condicional
+    (15) declaracao_codigo -> . expressao_interacao
+    (16) declaracao_codigo -> . expressao_atribuicao
+    (17) declaracao_codigo -> . expressao_leia
+    (18) declaracao_codigo -> . expressao_escreva
+    (19) declaracao_codigo -> . declara_var
+    (20) declaracao_codigo -> . retorna
+    (21) declaracao_codigo -> . chamada_funcao
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (22) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao FIM
+    (24) expressao_interacao -> . REPITA sequencia_de_declaracao ATE expressao
+    (25) expressao_atribuicao -> . ID ATRIBUICAO expressao
+    (26) expressao_leia -> . LEIA ABREPARENTESES expressao FECHAPARENTESES
+    (27) expressao_escreva -> . ESCREVE ABREPARENTESES expressao FECHAPARENTESES
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (34) retorna -> . ABREPARENTESES expressao FECHAPARENTESES
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    ATE             shift and go to state 84
+    SE              shift and go to state 33
+    REPITA          shift and go to state 34
+    ID              shift and go to state 19
+    LEIA            shift and go to state 35
+    ESCREVE         shift and go to state 36
+    ABREPARENTESES  shift and go to state 20
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    declaracao_codigo              shift and go to state 85
+    declaracao_funcao              shift and go to state 24
+    expressao_condicional          shift and go to state 25
+    expressao_interacao            shift and go to state 26
+    expressao_atribuicao           shift and go to state 27
+    expressao_leia                 shift and go to state 28
+    expressao_escreva              shift and go to state 29
+    declara_var                    shift and go to state 30
+    retorna                        shift and go to state 31
+    chamada_funcao                 shift and go to state 32
+    tipo                           shift and go to state 5
+
+state 60
+
+    (28) sequencia_de_declaracao -> declaracao_codigo .
+
+    ATE             reduce using rule 28 (sequencia_de_declaracao -> declaracao_codigo .)
+    SE              reduce using rule 28 (sequencia_de_declaracao -> declaracao_codigo .)
+    REPITA          reduce using rule 28 (sequencia_de_declaracao -> declaracao_codigo .)
+    ID              reduce using rule 28 (sequencia_de_declaracao -> declaracao_codigo .)
+    LEIA            reduce using rule 28 (sequencia_de_declaracao -> declaracao_codigo .)
+    ESCREVE         reduce using rule 28 (sequencia_de_declaracao -> declaracao_codigo .)
+    ABREPARENTESES  reduce using rule 28 (sequencia_de_declaracao -> declaracao_codigo .)
+    INTEIRO         reduce using rule 28 (sequencia_de_declaracao -> declaracao_codigo .)
+    FLUTUANTE       reduce using rule 28 (sequencia_de_declaracao -> declaracao_codigo .)
+    SENAO           reduce using rule 28 (sequencia_de_declaracao -> declaracao_codigo .)
+    FIM             reduce using rule 28 (sequencia_de_declaracao -> declaracao_codigo .)
+
+
+state 61
+
+    (26) expressao_leia -> LEIA ABREPARENTESES . expressao FECHAPARENTESES
+    (38) expressao -> . expressao_simples
+    (39) expressao -> . expressao_simples operadores_comparacao expressao_simples
+    (40) expressao_simples -> . expressao_simples operadores_atribuicao termo
+    (41) expressao_simples -> . expressao_simples operadores_multiplicacao termo
+    (42) expressao_simples -> . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    expressao                      shift and go to state 86
+    expressao_simples              shift and go to state 46
+    termo                          shift and go to state 47
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 62
+
+    (27) expressao_escreva -> ESCREVE ABREPARENTESES . expressao FECHAPARENTESES
+    (38) expressao -> . expressao_simples
+    (39) expressao -> . expressao_simples operadores_comparacao expressao_simples
+    (40) expressao_simples -> . expressao_simples operadores_atribuicao termo
+    (41) expressao_simples -> . expressao_simples operadores_multiplicacao termo
+    (42) expressao_simples -> . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    expressao                      shift and go to state 87
+    expressao_simples              shift and go to state 46
+    termo                          shift and go to state 47
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 63
+
+    (32) declara_var_loop -> ID VIRGULA . declara_var_loop
+    (32) declara_var_loop -> . ID VIRGULA declara_var_loop
+    (33) declara_var_loop -> . ID
+
+    ID              shift and go to state 37
+
+    declara_var_loop               shift and go to state 88
+
+state 64
+
+    (9) declaracao_parametro -> tipo DOISPONTOS ID VIRGULA . declaracao_parametro
+    (9) declaracao_parametro -> . tipo DOISPONTOS ID VIRGULA declaracao_parametro
+    (10) declaracao_parametro -> . tipo DOISPONTOS ID
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    tipo                           shift and go to state 13
+    declaracao_parametro           shift and go to state 89
+
+state 65
+
+    (5) declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .
+
+    INTEIRO         reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+    FLUTUANTE       reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+    $end            reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+    FIM             reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+    SE              reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+    REPITA          reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+    ID              reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+    LEIA            reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+    ESCREVE         reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+    ABREPARENTESES  reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+    ATE             reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+    SENAO           reduce using rule 5 (declaracao_funcao -> tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM .)
+
+
+state 66
+
+    (25) expressao_atribuicao -> ID ATRIBUICAO expressao .
+
+    FIM             reduce using rule 25 (expressao_atribuicao -> ID ATRIBUICAO expressao .)
+    SE              reduce using rule 25 (expressao_atribuicao -> ID ATRIBUICAO expressao .)
+    REPITA          reduce using rule 25 (expressao_atribuicao -> ID ATRIBUICAO expressao .)
+    ID              reduce using rule 25 (expressao_atribuicao -> ID ATRIBUICAO expressao .)
+    LEIA            reduce using rule 25 (expressao_atribuicao -> ID ATRIBUICAO expressao .)
+    ESCREVE         reduce using rule 25 (expressao_atribuicao -> ID ATRIBUICAO expressao .)
+    ABREPARENTESES  reduce using rule 25 (expressao_atribuicao -> ID ATRIBUICAO expressao .)
+    INTEIRO         reduce using rule 25 (expressao_atribuicao -> ID ATRIBUICAO expressao .)
+    FLUTUANTE       reduce using rule 25 (expressao_atribuicao -> ID ATRIBUICAO expressao .)
+    ATE             reduce using rule 25 (expressao_atribuicao -> ID ATRIBUICAO expressao .)
+    SENAO           reduce using rule 25 (expressao_atribuicao -> ID ATRIBUICAO expressao .)
+
+
+state 67
+
+    (35) chamada_funcao -> ID ABREPARENTESES parametros_chamada . FECHAPARENTESES
+
+    FECHAPARENTESES shift and go to state 90
+
+
+state 68
+
+    (36) parametros_chamada -> expressao . VIRGULA parametros_chamada
+    (37) parametros_chamada -> expressao .
+
+    VIRGULA         shift and go to state 91
+    FECHAPARENTESES reduce using rule 37 (parametros_chamada -> expressao .)
+
+
+state 69
+
+    (44) fator -> ABREPARENTESES expressao . FECHAPARENTESES
+
+    FECHAPARENTESES shift and go to state 92
+
+
+state 70
+
+    (34) retorna -> ABREPARENTESES expressao FECHAPARENTESES .
+
+    FIM             reduce using rule 34 (retorna -> ABREPARENTESES expressao FECHAPARENTESES .)
+    SE              reduce using rule 34 (retorna -> ABREPARENTESES expressao FECHAPARENTESES .)
+    REPITA          reduce using rule 34 (retorna -> ABREPARENTESES expressao FECHAPARENTESES .)
+    ID              reduce using rule 34 (retorna -> ABREPARENTESES expressao FECHAPARENTESES .)
+    LEIA            reduce using rule 34 (retorna -> ABREPARENTESES expressao FECHAPARENTESES .)
+    ESCREVE         reduce using rule 34 (retorna -> ABREPARENTESES expressao FECHAPARENTESES .)
+    ABREPARENTESES  reduce using rule 34 (retorna -> ABREPARENTESES expressao FECHAPARENTESES .)
+    INTEIRO         reduce using rule 34 (retorna -> ABREPARENTESES expressao FECHAPARENTESES .)
+    FLUTUANTE       reduce using rule 34 (retorna -> ABREPARENTESES expressao FECHAPARENTESES .)
+    ATE             reduce using rule 34 (retorna -> ABREPARENTESES expressao FECHAPARENTESES .)
+    SENAO           reduce using rule 34 (retorna -> ABREPARENTESES expressao FECHAPARENTESES .)
+
+
+state 71
+
+    (39) expressao -> expressao_simples operadores_comparacao . expressao_simples
+    (40) expressao_simples -> . expressao_simples operadores_atribuicao termo
+    (41) expressao_simples -> . expressao_simples operadores_multiplicacao termo
+    (42) expressao_simples -> . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    expressao_simples              shift and go to state 93
+    termo                          shift and go to state 47
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 72
+
+    (40) expressao_simples -> expressao_simples operadores_atribuicao . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    termo                          shift and go to state 94
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 73
+
+    (41) expressao_simples -> expressao_simples operadores_multiplicacao . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    termo                          shift and go to state 95
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 74
+
+    (50) operadores_comparacao -> MAIOR .
+
+    ABREPARENTESES  reduce using rule 50 (operadores_comparacao -> MAIOR .)
+    ID              reduce using rule 50 (operadores_comparacao -> MAIOR .)
+    INTEIRO         reduce using rule 50 (operadores_comparacao -> MAIOR .)
+    FLUTUANTE       reduce using rule 50 (operadores_comparacao -> MAIOR .)
+
+
+state 75
+
+    (51) operadores_comparacao -> MAIORIGUAL .
+
+    ABREPARENTESES  reduce using rule 51 (operadores_comparacao -> MAIORIGUAL .)
+    ID              reduce using rule 51 (operadores_comparacao -> MAIORIGUAL .)
+    INTEIRO         reduce using rule 51 (operadores_comparacao -> MAIORIGUAL .)
+    FLUTUANTE       reduce using rule 51 (operadores_comparacao -> MAIORIGUAL .)
+
+
+state 76
+
+    (52) operadores_comparacao -> MENOR .
+
+    ABREPARENTESES  reduce using rule 52 (operadores_comparacao -> MENOR .)
+    ID              reduce using rule 52 (operadores_comparacao -> MENOR .)
+    INTEIRO         reduce using rule 52 (operadores_comparacao -> MENOR .)
+    FLUTUANTE       reduce using rule 52 (operadores_comparacao -> MENOR .)
+
+
+state 77
+
+    (53) operadores_comparacao -> MENORIGUAL .
+
+    ABREPARENTESES  reduce using rule 53 (operadores_comparacao -> MENORIGUAL .)
+    ID              reduce using rule 53 (operadores_comparacao -> MENORIGUAL .)
+    INTEIRO         reduce using rule 53 (operadores_comparacao -> MENORIGUAL .)
+    FLUTUANTE       reduce using rule 53 (operadores_comparacao -> MENORIGUAL .)
+
+
+state 78
+
+    (54) operadores_comparacao -> IGUAL .
+
+    ABREPARENTESES  reduce using rule 54 (operadores_comparacao -> IGUAL .)
+    ID              reduce using rule 54 (operadores_comparacao -> IGUAL .)
+    INTEIRO         reduce using rule 54 (operadores_comparacao -> IGUAL .)
+    FLUTUANTE       reduce using rule 54 (operadores_comparacao -> IGUAL .)
+
+
+state 79
+
+    (58) operadores_atribuicao -> ADICAO .
+
+    ABREPARENTESES  reduce using rule 58 (operadores_atribuicao -> ADICAO .)
+    ID              reduce using rule 58 (operadores_atribuicao -> ADICAO .)
+    INTEIRO         reduce using rule 58 (operadores_atribuicao -> ADICAO .)
+    FLUTUANTE       reduce using rule 58 (operadores_atribuicao -> ADICAO .)
+
+
+state 80
+
+    (59) operadores_atribuicao -> SUBTRACAO .
+
+    ABREPARENTESES  reduce using rule 59 (operadores_atribuicao -> SUBTRACAO .)
+    ID              reduce using rule 59 (operadores_atribuicao -> SUBTRACAO .)
+    INTEIRO         reduce using rule 59 (operadores_atribuicao -> SUBTRACAO .)
+    FLUTUANTE       reduce using rule 59 (operadores_atribuicao -> SUBTRACAO .)
+
+
+state 81
+
+    (60) operadores_multiplicacao -> MULTIPLICACAO .
+
+    ABREPARENTESES  reduce using rule 60 (operadores_multiplicacao -> MULTIPLICACAO .)
+    ID              reduce using rule 60 (operadores_multiplicacao -> MULTIPLICACAO .)
+    INTEIRO         reduce using rule 60 (operadores_multiplicacao -> MULTIPLICACAO .)
+    FLUTUANTE       reduce using rule 60 (operadores_multiplicacao -> MULTIPLICACAO .)
+
+
+state 82
+
+    (61) operadores_multiplicacao -> DIVISAO .
+
+    ABREPARENTESES  reduce using rule 61 (operadores_multiplicacao -> DIVISAO .)
+    ID              reduce using rule 61 (operadores_multiplicacao -> DIVISAO .)
+    INTEIRO         reduce using rule 61 (operadores_multiplicacao -> DIVISAO .)
+    FLUTUANTE       reduce using rule 61 (operadores_multiplicacao -> DIVISAO .)
+
+
+state 83
+
+    (22) expressao_condicional -> SE expressao ENTAO . sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> SE expressao ENTAO . sequencia_de_declaracao FIM
+    (28) sequencia_de_declaracao -> . declaracao_codigo
+    (29) sequencia_de_declaracao -> . sequencia_de_declaracao declaracao_codigo
+    (13) declaracao_codigo -> . declaracao_funcao
+    (14) declaracao_codigo -> . expressao_condicional
+    (15) declaracao_codigo -> . expressao_interacao
+    (16) declaracao_codigo -> . expressao_atribuicao
+    (17) declaracao_codigo -> . expressao_leia
+    (18) declaracao_codigo -> . expressao_escreva
+    (19) declaracao_codigo -> . declara_var
+    (20) declaracao_codigo -> . retorna
+    (21) declaracao_codigo -> . chamada_funcao
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (22) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao FIM
+    (24) expressao_interacao -> . REPITA sequencia_de_declaracao ATE expressao
+    (25) expressao_atribuicao -> . ID ATRIBUICAO expressao
+    (26) expressao_leia -> . LEIA ABREPARENTESES expressao FECHAPARENTESES
+    (27) expressao_escreva -> . ESCREVE ABREPARENTESES expressao FECHAPARENTESES
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (34) retorna -> . ABREPARENTESES expressao FECHAPARENTESES
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    SE              shift and go to state 33
+    REPITA          shift and go to state 34
+    ID              shift and go to state 19
+    LEIA            shift and go to state 35
+    ESCREVE         shift and go to state 36
+    ABREPARENTESES  shift and go to state 20
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    sequencia_de_declaracao        shift and go to state 96
+    declaracao_codigo              shift and go to state 60
+    declaracao_funcao              shift and go to state 24
+    expressao_condicional          shift and go to state 25
+    expressao_interacao            shift and go to state 26
+    expressao_atribuicao           shift and go to state 27
+    expressao_leia                 shift and go to state 28
+    expressao_escreva              shift and go to state 29
+    declara_var                    shift and go to state 30
+    retorna                        shift and go to state 31
+    chamada_funcao                 shift and go to state 32
+    tipo                           shift and go to state 5
+
+state 84
+
+    (24) expressao_interacao -> REPITA sequencia_de_declaracao ATE . expressao
+    (38) expressao -> . expressao_simples
+    (39) expressao -> . expressao_simples operadores_comparacao expressao_simples
+    (40) expressao_simples -> . expressao_simples operadores_atribuicao termo
+    (41) expressao_simples -> . expressao_simples operadores_multiplicacao termo
+    (42) expressao_simples -> . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    expressao                      shift and go to state 97
+    expressao_simples              shift and go to state 46
+    termo                          shift and go to state 47
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 85
+
+    (29) sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .
+
+    ATE             reduce using rule 29 (sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .)
+    SE              reduce using rule 29 (sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .)
+    REPITA          reduce using rule 29 (sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .)
+    ID              reduce using rule 29 (sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .)
+    LEIA            reduce using rule 29 (sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .)
+    ESCREVE         reduce using rule 29 (sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .)
+    ABREPARENTESES  reduce using rule 29 (sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .)
+    INTEIRO         reduce using rule 29 (sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .)
+    FLUTUANTE       reduce using rule 29 (sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .)
+    SENAO           reduce using rule 29 (sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .)
+    FIM             reduce using rule 29 (sequencia_de_declaracao -> sequencia_de_declaracao declaracao_codigo .)
+
+
+state 86
+
+    (26) expressao_leia -> LEIA ABREPARENTESES expressao . FECHAPARENTESES
+
+    FECHAPARENTESES shift and go to state 98
+
+
+state 87
+
+    (27) expressao_escreva -> ESCREVE ABREPARENTESES expressao . FECHAPARENTESES
+
+    FECHAPARENTESES shift and go to state 99
+
+
+state 88
+
+    (32) declara_var_loop -> ID VIRGULA declara_var_loop .
+
+    INTEIRO         reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+    FLUTUANTE       reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+    $end            reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+    FIM             reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+    SE              reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+    REPITA          reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+    ID              reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+    LEIA            reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+    ESCREVE         reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+    ABREPARENTESES  reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+    ATE             reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+    SENAO           reduce using rule 32 (declara_var_loop -> ID VIRGULA declara_var_loop .)
+
+
+state 89
+
+    (9) declaracao_parametro -> tipo DOISPONTOS ID VIRGULA declaracao_parametro .
+
+    FECHAPARENTESES reduce using rule 9 (declaracao_parametro -> tipo DOISPONTOS ID VIRGULA declaracao_parametro .)
+
+
+state 90
+
+    (35) chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .
+
+    FIM             reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    SE              reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    REPITA          reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    ID              reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    LEIA            reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    ESCREVE         reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    ABREPARENTESES  reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    INTEIRO         reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    FLUTUANTE       reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    MAIOR           reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    MAIORIGUAL      reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    MENOR           reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    MENORIGUAL      reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    IGUAL           reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    ADICAO          reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    SUBTRACAO       reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    MULTIPLICACAO   reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    DIVISAO         reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    FECHAPARENTESES reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    ENTAO           reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    ATE             reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    SENAO           reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+    VIRGULA         reduce using rule 35 (chamada_funcao -> ID ABREPARENTESES parametros_chamada FECHAPARENTESES .)
+
+
+state 91
+
+    (36) parametros_chamada -> expressao VIRGULA . parametros_chamada
+    (36) parametros_chamada -> . expressao VIRGULA parametros_chamada
+    (37) parametros_chamada -> . expressao
+    (38) expressao -> . expressao_simples
+    (39) expressao -> . expressao_simples operadores_comparacao expressao_simples
+    (40) expressao_simples -> . expressao_simples operadores_atribuicao termo
+    (41) expressao_simples -> . expressao_simples operadores_multiplicacao termo
+    (42) expressao_simples -> . termo
+    (43) termo -> . fator
+    (44) fator -> . ABREPARENTESES expressao FECHAPARENTESES
+    (45) fator -> . chamada_funcao
+    (46) fator -> . expressao_numerica
+    (47) fator -> . expressao_id
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (48) expressao_numerica -> . numero
+    (49) expressao_id -> . ID
+    (64) numero -> . INTEIRO
+    (65) numero -> . FLUTUANTE
+
+    ABREPARENTESES  shift and go to state 44
+    ID              shift and go to state 52
+    INTEIRO         shift and go to state 54
+    FLUTUANTE       shift and go to state 55
+
+    expressao                      shift and go to state 68
+    parametros_chamada             shift and go to state 100
+    expressao_simples              shift and go to state 46
+    termo                          shift and go to state 47
+    fator                          shift and go to state 48
+    chamada_funcao                 shift and go to state 49
+    expressao_numerica             shift and go to state 50
+    expressao_id                   shift and go to state 51
+    numero                         shift and go to state 53
+
+state 92
+
+    (44) fator -> ABREPARENTESES expressao FECHAPARENTESES .
+
+    MAIOR           reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    MAIORIGUAL      reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    MENOR           reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    MENORIGUAL      reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    IGUAL           reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    ADICAO          reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    SUBTRACAO       reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    MULTIPLICACAO   reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    DIVISAO         reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    FECHAPARENTESES reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    ENTAO           reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    FIM             reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    SE              reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    REPITA          reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    ID              reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    LEIA            reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    ESCREVE         reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    ABREPARENTESES  reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    INTEIRO         reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    FLUTUANTE       reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    ATE             reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    SENAO           reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+    VIRGULA         reduce using rule 44 (fator -> ABREPARENTESES expressao FECHAPARENTESES .)
+
+
+state 93
+
+    (39) expressao -> expressao_simples operadores_comparacao expressao_simples .
+    (40) expressao_simples -> expressao_simples . operadores_atribuicao termo
+    (41) expressao_simples -> expressao_simples . operadores_multiplicacao termo
+    (58) operadores_atribuicao -> . ADICAO
+    (59) operadores_atribuicao -> . SUBTRACAO
+    (60) operadores_multiplicacao -> . MULTIPLICACAO
+    (61) operadores_multiplicacao -> . DIVISAO
+
+    FECHAPARENTESES reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    ENTAO           reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    FIM             reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    SE              reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    REPITA          reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    ID              reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    LEIA            reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    ESCREVE         reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    ABREPARENTESES  reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    INTEIRO         reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    FLUTUANTE       reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    ATE             reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    SENAO           reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    VIRGULA         reduce using rule 39 (expressao -> expressao_simples operadores_comparacao expressao_simples .)
+    ADICAO          shift and go to state 79
+    SUBTRACAO       shift and go to state 80
+    MULTIPLICACAO   shift and go to state 81
+    DIVISAO         shift and go to state 82
+
+    operadores_atribuicao          shift and go to state 72
+    operadores_multiplicacao       shift and go to state 73
+
+state 94
+
+    (40) expressao_simples -> expressao_simples operadores_atribuicao termo .
+
+    MAIOR           reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    MAIORIGUAL      reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    MENOR           reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    MENORIGUAL      reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    IGUAL           reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    ADICAO          reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    SUBTRACAO       reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    MULTIPLICACAO   reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    DIVISAO         reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    FECHAPARENTESES reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    ENTAO           reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    FIM             reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    SE              reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    REPITA          reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    ID              reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    LEIA            reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    ESCREVE         reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    ABREPARENTESES  reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    INTEIRO         reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    FLUTUANTE       reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    ATE             reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    SENAO           reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+    VIRGULA         reduce using rule 40 (expressao_simples -> expressao_simples operadores_atribuicao termo .)
+
+
+state 95
+
+    (41) expressao_simples -> expressao_simples operadores_multiplicacao termo .
+
+    MAIOR           reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    MAIORIGUAL      reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    MENOR           reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    MENORIGUAL      reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    IGUAL           reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    ADICAO          reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    SUBTRACAO       reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    MULTIPLICACAO   reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    DIVISAO         reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    FECHAPARENTESES reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    ENTAO           reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    FIM             reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    SE              reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    REPITA          reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    ID              reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    LEIA            reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    ESCREVE         reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    ABREPARENTESES  reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    INTEIRO         reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    FLUTUANTE       reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    ATE             reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    SENAO           reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+    VIRGULA         reduce using rule 41 (expressao_simples -> expressao_simples operadores_multiplicacao termo .)
+
+
+state 96
+
+    (22) expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao . SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao . FIM
+    (29) sequencia_de_declaracao -> sequencia_de_declaracao . declaracao_codigo
+    (13) declaracao_codigo -> . declaracao_funcao
+    (14) declaracao_codigo -> . expressao_condicional
+    (15) declaracao_codigo -> . expressao_interacao
+    (16) declaracao_codigo -> . expressao_atribuicao
+    (17) declaracao_codigo -> . expressao_leia
+    (18) declaracao_codigo -> . expressao_escreva
+    (19) declaracao_codigo -> . declara_var
+    (20) declaracao_codigo -> . retorna
+    (21) declaracao_codigo -> . chamada_funcao
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (22) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao FIM
+    (24) expressao_interacao -> . REPITA sequencia_de_declaracao ATE expressao
+    (25) expressao_atribuicao -> . ID ATRIBUICAO expressao
+    (26) expressao_leia -> . LEIA ABREPARENTESES expressao FECHAPARENTESES
+    (27) expressao_escreva -> . ESCREVE ABREPARENTESES expressao FECHAPARENTESES
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (34) retorna -> . ABREPARENTESES expressao FECHAPARENTESES
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    SENAO           shift and go to state 101
+    FIM             shift and go to state 102
+    SE              shift and go to state 33
+    REPITA          shift and go to state 34
+    ID              shift and go to state 19
+    LEIA            shift and go to state 35
+    ESCREVE         shift and go to state 36
+    ABREPARENTESES  shift and go to state 20
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    declaracao_codigo              shift and go to state 85
+    declaracao_funcao              shift and go to state 24
+    expressao_condicional          shift and go to state 25
+    expressao_interacao            shift and go to state 26
+    expressao_atribuicao           shift and go to state 27
+    expressao_leia                 shift and go to state 28
+    expressao_escreva              shift and go to state 29
+    declara_var                    shift and go to state 30
+    retorna                        shift and go to state 31
+    chamada_funcao                 shift and go to state 32
+    tipo                           shift and go to state 5
+
+state 97
+
+    (24) expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .
+
+    FIM             reduce using rule 24 (expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .)
+    SE              reduce using rule 24 (expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .)
+    REPITA          reduce using rule 24 (expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .)
+    ID              reduce using rule 24 (expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .)
+    LEIA            reduce using rule 24 (expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .)
+    ESCREVE         reduce using rule 24 (expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .)
+    ABREPARENTESES  reduce using rule 24 (expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .)
+    INTEIRO         reduce using rule 24 (expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .)
+    FLUTUANTE       reduce using rule 24 (expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .)
+    ATE             reduce using rule 24 (expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .)
+    SENAO           reduce using rule 24 (expressao_interacao -> REPITA sequencia_de_declaracao ATE expressao .)
+
+
+state 98
+
+    (26) expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .
+
+    FIM             reduce using rule 26 (expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .)
+    SE              reduce using rule 26 (expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .)
+    REPITA          reduce using rule 26 (expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .)
+    ID              reduce using rule 26 (expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .)
+    LEIA            reduce using rule 26 (expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .)
+    ESCREVE         reduce using rule 26 (expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .)
+    ABREPARENTESES  reduce using rule 26 (expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .)
+    INTEIRO         reduce using rule 26 (expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .)
+    FLUTUANTE       reduce using rule 26 (expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .)
+    ATE             reduce using rule 26 (expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .)
+    SENAO           reduce using rule 26 (expressao_leia -> LEIA ABREPARENTESES expressao FECHAPARENTESES .)
+
+
+state 99
+
+    (27) expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .
+
+    FIM             reduce using rule 27 (expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .)
+    SE              reduce using rule 27 (expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .)
+    REPITA          reduce using rule 27 (expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .)
+    ID              reduce using rule 27 (expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .)
+    LEIA            reduce using rule 27 (expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .)
+    ESCREVE         reduce using rule 27 (expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .)
+    ABREPARENTESES  reduce using rule 27 (expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .)
+    INTEIRO         reduce using rule 27 (expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .)
+    FLUTUANTE       reduce using rule 27 (expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .)
+    ATE             reduce using rule 27 (expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .)
+    SENAO           reduce using rule 27 (expressao_escreva -> ESCREVE ABREPARENTESES expressao FECHAPARENTESES .)
+
+
+state 100
+
+    (36) parametros_chamada -> expressao VIRGULA parametros_chamada .
+
+    FECHAPARENTESES reduce using rule 36 (parametros_chamada -> expressao VIRGULA parametros_chamada .)
+
+
+state 101
+
+    (22) expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO . sequencia_de_declaracao FIM
+    (28) sequencia_de_declaracao -> . declaracao_codigo
+    (29) sequencia_de_declaracao -> . sequencia_de_declaracao declaracao_codigo
+    (13) declaracao_codigo -> . declaracao_funcao
+    (14) declaracao_codigo -> . expressao_condicional
+    (15) declaracao_codigo -> . expressao_interacao
+    (16) declaracao_codigo -> . expressao_atribuicao
+    (17) declaracao_codigo -> . expressao_leia
+    (18) declaracao_codigo -> . expressao_escreva
+    (19) declaracao_codigo -> . declara_var
+    (20) declaracao_codigo -> . retorna
+    (21) declaracao_codigo -> . chamada_funcao
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (22) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao FIM
+    (24) expressao_interacao -> . REPITA sequencia_de_declaracao ATE expressao
+    (25) expressao_atribuicao -> . ID ATRIBUICAO expressao
+    (26) expressao_leia -> . LEIA ABREPARENTESES expressao FECHAPARENTESES
+    (27) expressao_escreva -> . ESCREVE ABREPARENTESES expressao FECHAPARENTESES
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (34) retorna -> . ABREPARENTESES expressao FECHAPARENTESES
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    SE              shift and go to state 33
+    REPITA          shift and go to state 34
+    ID              shift and go to state 19
+    LEIA            shift and go to state 35
+    ESCREVE         shift and go to state 36
+    ABREPARENTESES  shift and go to state 20
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    sequencia_de_declaracao        shift and go to state 103
+    declaracao_codigo              shift and go to state 60
+    declaracao_funcao              shift and go to state 24
+    expressao_condicional          shift and go to state 25
+    expressao_interacao            shift and go to state 26
+    expressao_atribuicao           shift and go to state 27
+    expressao_leia                 shift and go to state 28
+    expressao_escreva              shift and go to state 29
+    declara_var                    shift and go to state 30
+    retorna                        shift and go to state 31
+    chamada_funcao                 shift and go to state 32
+    tipo                           shift and go to state 5
+
+state 102
+
+    (23) expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .
+
+    FIM             reduce using rule 23 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .)
+    SE              reduce using rule 23 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .)
+    REPITA          reduce using rule 23 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .)
+    ID              reduce using rule 23 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .)
+    LEIA            reduce using rule 23 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .)
+    ESCREVE         reduce using rule 23 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .)
+    ABREPARENTESES  reduce using rule 23 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .)
+    INTEIRO         reduce using rule 23 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .)
+    FLUTUANTE       reduce using rule 23 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .)
+    ATE             reduce using rule 23 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .)
+    SENAO           reduce using rule 23 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao FIM .)
+
+
+state 103
+
+    (22) expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao . FIM
+    (29) sequencia_de_declaracao -> sequencia_de_declaracao . declaracao_codigo
+    (13) declaracao_codigo -> . declaracao_funcao
+    (14) declaracao_codigo -> . expressao_condicional
+    (15) declaracao_codigo -> . expressao_interacao
+    (16) declaracao_codigo -> . expressao_atribuicao
+    (17) declaracao_codigo -> . expressao_leia
+    (18) declaracao_codigo -> . expressao_escreva
+    (19) declaracao_codigo -> . declara_var
+    (20) declaracao_codigo -> . retorna
+    (21) declaracao_codigo -> . chamada_funcao
+    (5) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES sequencia_declaracao FIM
+    (6) declaracao_funcao -> . tipo ID ABREPARENTESES declaracao_parametro FECHAPARENTESES FIM
+    (7) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES sequencia_declaracao FIM
+    (8) declaracao_funcao -> . tipo ID ABREPARENTESES FECHAPARENTESES FIM
+    (22) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM
+    (23) expressao_condicional -> . SE expressao ENTAO sequencia_de_declaracao FIM
+    (24) expressao_interacao -> . REPITA sequencia_de_declaracao ATE expressao
+    (25) expressao_atribuicao -> . ID ATRIBUICAO expressao
+    (26) expressao_leia -> . LEIA ABREPARENTESES expressao FECHAPARENTESES
+    (27) expressao_escreva -> . ESCREVE ABREPARENTESES expressao FECHAPARENTESES
+    (30) declara_var -> . tipo DOISPONTOS ID VIRGULA declara_var_loop
+    (31) declara_var -> . tipo DOISPONTOS ID
+    (34) retorna -> . ABREPARENTESES expressao FECHAPARENTESES
+    (35) chamada_funcao -> . ID ABREPARENTESES parametros_chamada FECHAPARENTESES
+    (62) tipo -> . INTEIRO
+    (63) tipo -> . FLUTUANTE
+
+    FIM             shift and go to state 104
+    SE              shift and go to state 33
+    REPITA          shift and go to state 34
+    ID              shift and go to state 19
+    LEIA            shift and go to state 35
+    ESCREVE         shift and go to state 36
+    ABREPARENTESES  shift and go to state 20
+    INTEIRO         shift and go to state 6
+    FLUTUANTE       shift and go to state 7
+
+    declaracao_codigo              shift and go to state 85
+    declaracao_funcao              shift and go to state 24
+    expressao_condicional          shift and go to state 25
+    expressao_interacao            shift and go to state 26
+    expressao_atribuicao           shift and go to state 27
+    expressao_leia                 shift and go to state 28
+    expressao_escreva              shift and go to state 29
+    declara_var                    shift and go to state 30
+    retorna                        shift and go to state 31
+    chamada_funcao                 shift and go to state 32
+    tipo                           shift and go to state 5
+
+state 104
+
+    (22) expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .
+
+    FIM             reduce using rule 22 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .)
+    SE              reduce using rule 22 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .)
+    REPITA          reduce using rule 22 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .)
+    ID              reduce using rule 22 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .)
+    LEIA            reduce using rule 22 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .)
+    ESCREVE         reduce using rule 22 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .)
+    ABREPARENTESES  reduce using rule 22 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .)
+    INTEIRO         reduce using rule 22 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .)
+    FLUTUANTE       reduce using rule 22 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .)
+    ATE             reduce using rule 22 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .)
+    SENAO           reduce using rule 22 (expressao_condicional -> SE expressao ENTAO sequencia_de_declaracao SENAO sequencia_de_declaracao FIM .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ABREPARENTESES in state 52 resolved as shift
